@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gatti_in_fila</title>
+    <style>
+        img {
+          max-width: 200px;
+        }
+        table {
+          font-size:2em;
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    <h2>Gatti in fila V2</h2>
+    <p>Inserire il numero totale di gatti</p>
+    <input type="text" id="nGatti" value="">
+    <p>Inserire in numero di gatti per fila</p>
+    <input type="text" id="nGattiFila" value="">
+    <button id="btnCalcola">Calcola</button>
+    <table>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script> 
+        document.getElementById("btnCalcola").onclick=function(){
+            nGatti=Number(document.getElementById("nGatti").value);
+            nGattiFila=Number(document.getElementById("nGattiFila").value);
 
+            nFile=Math.ceil(nGatti/nGattiFila);
+            gattiFuori=(nFile*nGattiFila)-nGatti;
+
+            do{
+                for (let i=0; i<=nFile; i++){
+                    let riga=document.createElement("tr");
+                    document.getElementById("tbody").appendChild(riga);
+                    if (nGatti>=nGattiFila)
+                        for (let i=0; i<nGattiFila; i++){
+                            let td=document.createElement("td");
+                            let img=document.createElement("img");
+                            img.src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+                            td.appendChild(img);
+                            riga.appendChild(td); 
+                        }
+                        
+                    else
+                        for (let i=0; i<gattiFuori; i++){
+                            let td=document.createElement("td");
+                            let img=document.createElement("img");
+                            img.src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+                            td.appendChild(img);
+                            riga.appendChild(td);
+                        }
+                    nGatti--;
+                }   
+            }while(nGatti>0)
+            
+
+        }
+    </script>
+    
+</body>
+</html>
