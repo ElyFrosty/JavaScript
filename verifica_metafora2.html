@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>verifica_metafore_interattive_pt2</title>
+</head>
+<body>
+    <h2>Verifica metafore interattive (parte 2/2)</h2>
+
+    <form>
+        <div class="form-group">
+          <label for="exampleInputAutista">Autista</label>
+          <input type="autista"  class="form-control" id="exampleInputAutista"  placeholder="SOGGETTO protagonista">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputDestinazione">Destinazione</label>
+          <input type="destinazione"  class="form-control" id="exampleInputDestinazione" placeholder="OBBIETTIVO da raggiungere">
+        </div>
+        <div class="form-group">
+           <label for="exampleInputCarburante">Carburante</label>
+           <input type="carburante"  class="form-control" id="exampleInputCarburante"  placeholder="MOTIVAZIONE che spinge verso l'obbiettivo">
+        </div>
+        <div class="form-group">
+           <label for="exampleInputLuogo">Luogo</label>
+           <input type="luogo"  class="form-control" id="exampleInputLuogo" placeholder="CONTESTO in cui si svolge l'azione">
+        </div>
+        <div class="form-group">
+           <label for="exampleInputStrada">Strada</label>
+           <input type="strada"  class="form-control" id="exampleInputStrada"  placeholder="COMPORTAMENTO">
+        </div>
+        <div class="form-group">
+           <label for="exampleInputStradaOK">Strada OK</label>
+           <input type="stradaOK"  class="form-control" id="exampleInputStradaOK" placeholder="COMPORTAMENTO ADEGUATO">
+        </div>
+        <div class="form-group">
+           <label for="exampleInputStradaKO">Strada KO</label>
+           <input type="stradaKO"  class="form-control" id="exampleInputStradaKO"  placeholder="COMPORTAMENTO INADEGUATO">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputCespugli">Cespugli</label>
+            <input type="cespugli"  class="form-control" id="exampleInputCespugli" placeholder="FEEDBACK">
+         </div>
+        <div class="form-group">
+           <label for="exampleInputLupo">Lupo</label>
+           <input type="lupo"  class="form-control" id="exampleInputLupo" placeholder="CONSEGUENZE NEGATIVE">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputCestino">Cestino</label>
+            <input type="cestino"  class="form-control" id="exampleInputCestino" placeholder="ATTACCAMENTI da lasciare">
+         </div>
+        <div class="form-group">
+           <label for="exampleInputDistanza">Distanza</label>
+           <input type="distanza"  class="form-control" id="exampleInputDistanza" placeholder="3">
+        </div> 
+        
+        <div class="form-actions">
+            <center>
+                <p>
+                    <button type="button" onclick="inizio()">INIZIO</button>
+                </p>
+                <p>
+                    <input type="button" value="  " id="BSx" onClick="bottoneSx()" class="btn">
+                    <input type="button" value="  " id="BDx" onClick="bottoneDx()" class="btn">
+                </p>
+            </center>
+        </div>
+    </form>
+    
+    <p>Narrazione</p>
+    <textarea id="myTextarea"></textarea>  
+    
+    
+</body>
+
+<script>
+    
+    var cont=1, contSi, contNo, Autista, Destinazione, Carburante, Luogo, Strada, Strada_OK, Strada_KO, Cespigli, Lupo, Cestino, Motivazione;
+    function popup(pagina){
+        window.open(pagina,'', 'width=500, height=390, left=500, top=100, resizable=yes, toolbar=no, scrollbars=no, status=no');
+    }
+
+    function inizio(){
+        if (document.getElementById("exampleInputAutista").value.toUpperCase()!="")
+            Autista=document.getElementById("exampleInputAutista").value.toUpperCase();
+        else
+            Autista="SOGGETTO";
+
+        if (document.getElementById("exampleInputDestinazione").value.toUpperCase()!="")
+            Destinazione=document.getElementById("exampleInputDestinazione").value.toUpperCase();
+        else
+            Destinazione="OBBIETTIVO";
+
+        if (document.getElementById("exampleInputCarburante").value.toUpperCase()!="")
+            Carburante=document.getElementById("exampleInputCarburante").value.toUpperCase();
+        else
+            Carburante="MOTIVAZIONE";
+
+        if (document.getElementById("exampleInputLuogo").value.toUpperCase()!="")
+            Luogo=document.getElementById("exampleInputLuogo").value.toUpperCase();
+        else
+            Luogo="SITUAZIONE";
+
+        if (document.getElementById("exampleInputStrada").value.toUpperCase()!="")
+            Strada=document.getElementById("exampleInputStrada").value.toUpperCase();
+        else
+            Strada="COMPORTAMENTO";
+
+        if (document.getElementById("exampleInputStradaOK").value.toUpperCase()!="")
+            Strada_OK=document.getElementById("exampleInputStradaOK").value.toUpperCase();
+        else
+            Strada_OK="COMPORTAMENTO OK";
+
+        if (document.getElementById("exampleInputStradaKO").value.toUpperCase()!="")
+            Strada_KO=document.getElementById("exampleInputStradaKO").value.toUpperCase();
+        else
+            Strada_KO="COMPORTAMENTO KO";
+
+        if (document.getElementById("exampleInputLupo").value.toUpperCase()!="")
+            Lupo=document.getElementById("exampleInputLupo").value.toUpperCase();
+        else
+            Lupo="CONSEGUENZE";
+
+        let distanza=document.getElementById("exampleInputDistanza").value.toUpperCase();
+            if (distanza=="") 
+                distanza=3;
+        
+        document.getElementById("myTextarea").value+="\n"+"Distanza iniziale dall'obbiettivo: ("+distanza+")";
+        document.getElementById("myTextarea").value+="\n"+Autista+" vuoi raggiungere l'obbiettivo?";
+        document.getElementById("myTextarea").scrollTop=document.getElementById("myTextarea").scrollHeight;
+        document.getElementById("BSx").value="No";
+        document.getElementById("BDx").value="Si";
+    }
+
+    function bottoneSx(){
+        document.getElementById("myTextarea").value+="\n Mancando "+Carburante+" per raggiungere "+Destinazione+", "+Autista+" nel contesto "+Luogo+" non raggiungerai l'obbiettivo! ";
+        document.getElementById("myTextarea").value+="\n"+Autista+" vuoi raggiungere l'obbiettivo?";
+    }
+    
+    function bottoneDx(){
+        document.getElementById("myTextarea").value+="\n"+Autista+" quale "+Strada+" scegli?";
+        document.getElementById("BSx").value="COMPORTAMENTO INADEGUATO";
+        document.getElementById("BDx").value="COMPORTAMENTO ADEGUATO";
+        
+
+    }
+</script>
+</html>
